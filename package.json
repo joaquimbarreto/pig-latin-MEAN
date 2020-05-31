@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/joaquimbarreto/pig-latin-MEAN/issues"
   },
-  "homepage": "https://github.com/joaquimbarreto/pig-latin-MEAN#readme"
+  "homepage": "https://github.com/joaquimbarreto/pig-latin-MEAN#readme",
+  "dependencies": {
+    "mongodb": "^3.5.8",
+    "mongoose": "^5.9.16"
+  }
 }
