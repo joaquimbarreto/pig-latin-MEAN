@@ -1,6 +1,6 @@
 const request = require("supertest");
-const app = require("../server/app");
-const Translation = require("../models/translation");
+const app = require("../src/server/app");
+const Translation = require("../src/models/translation");
 const { userOne, setupDatabase } = require("./fixtures/db");
 
 beforeEach(setupDatabase);

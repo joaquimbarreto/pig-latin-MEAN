@@ -1,5 +1,5 @@
 const request = require("supertest");
-const app = require("../server/app");
+const app = require("../src/server/app");
 const { userOneId, userOne, setupDatabase } = require("./fixtures/db");
 
 beforeEach(setupDatabase);
@@ -10,7 +10,7 @@ test("Should signup a new user", async () => {
     .send({
       name: "Andrew",
       email: "andrew@example.com",
-      password: "MyPass777!"
+      password: "MyPass777!",
     })
     .expect(201);
 });
@@ -20,7 +20,7 @@ test("Should login existing user", async () => {
     .post("/users/login")
     .send({
       email: userOne.email,
-      password: userOne.password
+      password: userOne.password,
     })
     .expect(200);
 });
@@ -30,7 +30,7 @@ test("Should not login nonexistent user", async () => {
     .post("/users/login")
     .send({
       email: userOne.email,
-      password: "thisisnotmypass"
+      password: "thisisnotmypass",
     })
     .expect(400);
 });
@@ -44,10 +44,7 @@ test("Should get profile for user", async () => {
 });
 
 test("Should not get profile for unauthenticated user", async () => {
-  await request(app)
-    .get("/users/me")
-    .send()
-    .expect(401);
+  await request(app).get("/users/me").send().expect(401);
 });
 
 test("Should logout current user", async () => {
